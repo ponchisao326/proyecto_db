@@ -13,11 +13,13 @@ BEGIN
        SET MESSAGE_TEXT = 'Error: Producto no encontrado';
     END IF;
 
+    -- Verificar que la cantidad sea mayor a 0
     IF p_cantidad <= 0 THEN
        SIGNAL SQLSTATE '45000'
        SET MESSAGE_TEXT = 'Error: La cantidad no puede ser menor o igual a 0';
     END IF;
 
+    -- Actualizar el stock del producto
     UPDATE productos
     SET stock = p_cantidad
     WHERE id_producto = p_id_producto;

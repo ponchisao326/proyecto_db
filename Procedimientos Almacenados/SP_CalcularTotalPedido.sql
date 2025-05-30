@@ -11,7 +11,7 @@ BEGIN
     DECLARE count_pedido INT DEFAULT 0;
     DECLARE done BOOLEAN DEFAULT FALSE;
 
-    -- Declaraciones deben estar primero
+    -- Cursor para recorrer los detalles del pedido
     DECLARE cur_detalles CURSOR FOR
         SELECT cantidad, precio
         FROM detalles_pedido
@@ -24,6 +24,7 @@ BEGIN
     FROM pedidos
     WHERE id_pedido = p_id_pedido;
 
+    -- Si no existe el pedido, lanzar un error
     IF count_pedido = 0 THEN
         SIGNAL SQLSTATE '45000'
             SET MESSAGE_TEXT = 'Error: Pedido no encontrado';
@@ -32,6 +33,7 @@ BEGIN
     OPEN cur_detalles;
     SET p_total = 0;
 
+    -- Recorrer los detalles del pedido y calcular el total
     read_loop: LOOP
         FETCH cur_detalles INTO v_cantidad, v_precio;
         IF done THEN
@@ -49,3 +51,8 @@ BEGIN
     WHERE id_pedido = p_id_pedido;
 END $$
 DELIMITER ;
+
+-- Ejemplo de llamada al procedimiento
+CALL SP_CalcularTotalPedido(1, @total);
+
+SELECT @total AS Total_Pedido;

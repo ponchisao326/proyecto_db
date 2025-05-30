@@ -5,5 +5,6 @@ DROP TABLE categorias;
 DROP TABLE clientes;
 DROP TABLE pedidos;
 DROP TABLE productos;
+DROP TABLE detalles_pedido;
 
 SET FOREIGN_KEY_CHECKS = 1;
