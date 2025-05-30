@@ -1,3 +1,4 @@
+-- ----------------- Primary Tables -------------------
 CREATE TABLE IF NOT EXISTS categorias (
     id_categoria INT PRIMARY KEY AUTO_INCREMENT,
     nombre VARCHAR(255) NOT NULL,
@@ -30,4 +31,17 @@ CREATE TABLE IF NOT EXISTS pedidos (
     total DECIMAL(10, 2) NOT NULL,
     FOREIGN KEY (id_cliente) REFERENCES clientes(id_cliente),
     FOREIGN KEY (id_pedido) REFERENCES productos(id_producto)
+);
+
+-- ----------------- Secundary Tables -------------------
+
+-- Creamos la tabla de detalles de pedido
+CREATE TABLE IF NOT EXISTS detalles_pedido (
+    id_detalle INT PRIMARY KEY AUTO_INCREMENT,
+    id_pedido INT NOT NULL,
+    id_producto INT NOT NULL,
+    cantidad INT NOT NULL,
+    precio DECIMAL(10, 2) NOT NULL,
+    FOREIGN KEY (id_pedido) REFERENCES pedidos(id_pedido),
+    FOREIGN KEY (id_producto) REFERENCES productos(id_producto)
 );
