@@ -29,8 +29,7 @@ CREATE TABLE IF NOT EXISTS pedidos (
     fecha_pedido TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     estado VARCHAR(50) NOT NULL,
     total DECIMAL(10, 2) NOT NULL,
-    FOREIGN KEY (id_cliente) REFERENCES clientes(id_cliente),
-    FOREIGN KEY (id_pedido) REFERENCES productos(id_producto)
+    FOREIGN KEY (id_cliente) REFERENCES clientes(id_cliente)
 );
 
 -- ----------------- Secundary Tables -------------------
@@ -43,5 +42,25 @@ CREATE TABLE IF NOT EXISTS detalles_pedido (
     cantidad INT NOT NULL,
     precio DECIMAL(10, 2) NOT NULL,
     FOREIGN KEY (id_pedido) REFERENCES pedidos(id_pedido),
+    FOREIGN KEY (id_producto) REFERENCES productos(id_producto)
+);
+
+-- Creamos la tabla de registro historico
+CREATE TABLE IF NOT EXISTS registro_historico (
+    id_registro INT PRIMARY KEY AUTO_INCREMENT,
+    id_producto INT NOT NULL,
+    precio_old DECIMAL(10, 2) NOT NULL,
+    precio_new DECIMAL(10, 2) NOT NULL,
+    fecha_cambio TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (id_producto) REFERENCES productos(id_producto)
+);
+
+-- Creamos la tabla para registrar cuando queda poco stock
+CREATE TABLE IF NOT EXISTS notificaciones_stock (
+    id_notificacion INT PRIMARY KEY AUTO_INCREMENT,
+    id_producto INT NOT NULL,
+    stock_actual INT NOT NULL,
+    fecha_alerta TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    mensaje TEXT NOT NULL,
     FOREIGN KEY (id_producto) REFERENCES productos(id_producto)
 );

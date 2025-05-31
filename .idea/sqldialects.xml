@@ -9,6 +9,13 @@
     <file url="file://$PROJECT_DIR$/Procedimientos Almacenados/SP_GenerarReporteVentas.sql" dialect="MariaDB" />
     <file url="file://$PROJECT_DIR$/Procedimientos Almacenados/SP_RegistrarCliente.sql" dialect="MariaDB" />
     <file url="file://$PROJECT_DIR$/TableCreation.sql" dialect="MariaDB" />
+    <file url="file://$PROJECT_DIR$/Triggers/TRG_ActualizarTotalPedido.sql" dialect="MariaDB" />
     <file url="file://$PROJECT_DIR$/Triggers/TRG_ControlStock.sql" dialect="MariaDB" />
+    <file url="file://$PROJECT_DIR$/Triggers/TRG_NotificacionStockBajo.sql" dialect="MariaDB" />
+    <file url="file://$PROJECT_DIR$/Triggers/TRG_RegistroHistorico.sql" dialect="MariaDB" />
+    <file url="file://$PROJECT_DIR$/vistas/V_ClientesPreferenciales.sql" dialect="MariaDB" />
+    <file url="file://$PROJECT_DIR$/vistas/V_EstadisticasVentas.sql" dialect="MariaDB" />
+    <file url="file://$PROJECT_DIR$/vistas/V_ProductosMasVendidos.sql" dialect="MariaDB" />
+    <file url="file://$PROJECT_DIR$/vistas/V_StockCritico.sql" dialect="MariaDB" />
   </component>
 </project>

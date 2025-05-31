@@ -56,3 +56,4 @@ DELIMITER ;
 CALL SP_CalcularTotalPedido(1, @total);
 
 SELECT @total AS Total_Pedido;
+
